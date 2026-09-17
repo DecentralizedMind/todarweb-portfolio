@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sham Pal — Laravel and front-end developer</title>
+<meta name="description" content="Ten years building web applications in PHP and Laravel. Attendance software, school management systems, payment integrations and admin dashboards. Available for freelance and contract work.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink:      #16231e;
+    --ink-soft: #4a5a53;
+    --paper:    #e4e7de;
+    --panel:    #f7f8f4;
+    --rule:     #c2c9ba;
+    --rule-faint:#d5dbcd;
+    --green:    #2e5e4e;
+    --ochre:    #8c5a00;
+
+    --display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+    --text: "Source Serif 4", Georgia, serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--text);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page { max-width: 58rem; margin: 0 auto; padding: 0 1.5rem; }
+
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 3px;
+  }
+
+  /* ---------- masthead ---------- */
+
+  .masthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 1.75rem 0 0;
+    font-family: var(--display);
+    font-size: .9rem;
+    letter-spacing: .01em;
+  }
+  .masthead .place { color: var(--ink-soft); }
+
+  /* ---------- hero: ruled register paper ---------- */
+
+  .hero {
+    position: relative;
+    padding: 4.5rem 0 4rem;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 2rem 0 1rem;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 2.24rem,
+      var(--rule-faint) 2.24rem,
+      var(--rule-faint) 2.3rem
+    );
+    z-index: 0;
+  }
+  .hero > * { position: relative; z-index: 1; }
+
+  .hero h1 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(2.9rem, 9vw, 5.2rem);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+    margin: 0 0 1.5rem;
+    max-width: 16ch;
+  }
+
+  .standfirst {
+    font-size: clamp(1.1rem, 2.4vw, 1.3rem);
+    line-height: 1.55;
+    max-width: 44ch;
+    margin: 0 0 2rem;
+  }
+
+  .available {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    font-family: var(--display);
+    font-size: .95rem;
+    font-weight: 600;
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    padding: .5rem .95rem;
+  }
+  .dot {
+    width: .55rem; height: .55rem;
+    background: var(--green);
+    border-radius: 50%;
+    flex: none;
+  }
+
+  /* ---------- sections ---------- */
+
+  section { padding: 3.5rem 0; border-top: 1px solid var(--rule); }
+
+  h2 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+    margin: 0 0 1.75rem;
+  }
+
+  /* ---------- the register of shipped work ---------- */
+
+  .register { border-top: 1px solid var(--rule); }
+
+  .entry {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: .25rem 1.5rem;
+    padding: 1.6rem 0;
+    border-bottom: 1px solid var(--rule-faint);
+  }
+
+  .entry h3 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.35rem;
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+
+  .entry p {
+    grid-column: 1 / -1;
+    margin: .4rem 0 0;
+    max-width: 58ch;
+    color: var(--ink-soft);
+  }
+
+  .entry .built {
+    grid-column: 1 / -1;
+    margin: .7rem 0 0;
+    font-family: var(--display);
+    font-size: .85rem;
+    color: var(--ink-soft);
+  }
+
+  .state {
+    font-family: var(--display);
+    font-size: .8rem;
+    font-weight: 600;
+    align-self: center;
+    padding: .2rem .6rem;
+    border: 1px solid currentColor;
+    white-space: nowrap;
+  }
+  .state.live  { color: var(--green); }
+  .state.early { color: var(--ochre); }
+  .state.demo  { color: var(--ink-soft); }
+
+  /* ---------- what I take on ---------- */
+
+  .work { display: grid; gap: 0; }
+  .work div {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--rule-faint);
+    display: grid;
+    grid-template-columns: 13rem 1fr;
+    gap: 1.5rem;
+    align-items: baseline;
+  }
+  .work h3 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 0;
+  }
+  .work p { margin: 0; color: var(--ink-soft); max-width: 52ch; }
+
+  /* ---------- contact ---------- */
+
+  .contact p { max-width: 46ch; }
+
+  .lines { margin: 2rem 0 0; display: grid; gap: .9rem; }
+  .lines a {
+    font-family: var(--display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    text-decoration: none;
+    border-bottom: 2px solid var(--rule);
+    padding-bottom: .15rem;
+    justify-self: start;
+  }
+  .lines a:hover { border-bottom-color: var(--green); color: var(--green); }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.75rem 0 3rem;
+    font-family: var(--display);
+    font-size: .85rem;
+    color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 40rem) {
+    body { font-size: 1rem; }
+    .hero { padding: 3rem 0 2.5rem; }
+    .hero::before { display: none; }
+    .entry { grid-template-columns: 1fr; }
+    .state { justify-self: start; margin-top: .5rem; }
+    .work div { grid-template-columns: 1fr; gap: .3rem; }
+    .masthead { flex-direction: column; gap: .2rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <header class="masthead">
+    <span>Sham Pal</span>
+    <span class="place">Punjab, India</span>
+  </header>
+
+  <div class="hero">
+    <h1>I build the software that runs schools and shift work.</h1>
+    <p class="standfirst">
+      Ten years writing PHP and Laravel, with the front end to match. Two of my
+      products are in daily use by the people they were built for.
+    </p>
+    <p class="available"><span class="dot" aria-hidden="true"></span> Taking on freelance and contract work</p>
+  </div>
+
+  <section>
+    <h2>What I've shipped</h2>
+
+    <div class="register">
+
+      <article class="entry">
+        <h3>MyShift</h3>
+        <span class="state live">In daily use</span>
+        <p>
+          Employee attendance and time tracking. Staff clock in, managers see
+          where everyone is, and the month's hours come out the other end without
+          anyone maintaining a spreadsheet.
+        </p>
+        <p class="built">PHP · Laravel · MySQL</p>
+      </article>
+
+      <article class="entry">
+        <h3>VexEdu</h3>
+        <span class="state early">First schools onboarding</span>
+        <p>
+          School management, built multi-tenant so each school gets its own space
+          on one platform. Attendance, fees, a parent portal that works on a phone,
+          and online fee payment through Razorpay.
+        </p>
+        <p class="built">Laravel · MySQL · Razorpay · Android app for parents</p>
+      </article>
+
+      <article class="entry">
+        <h3>Resume screener</h3>
+        <span class="state demo">Demo</span>
+        <p>
+          Upload a batch of CVs against a job description and get them back ranked,
+          with the reasoning shown. Built to show how an AI model fits into a normal
+          Laravel app: queued jobs, a JSON API, and output you can check.
+        </p>
+        <p class="built">Laravel · queues · Claude API</p>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>What I take on</h2>
+    <div class="work">
+      <div>
+        <h3>Web applications</h3>
+        <p>Laravel backends and the front end that sits on them, from first commit to live server.</p>
+      </div>
+      <div>
+        <h3>Payments and integrations</h3>
+        <p>Razorpay and payment gateways, third-party APIs, and the webhook handling that keeps records straight.</p>
+      </div>
+      <div>
+        <h3>Admin dashboards</h3>
+        <p>The screens your team actually works in all day. Reporting, roles and permissions, bulk operations.</p>
+      </div>
+      <div>
+        <h3>Mobile apps</h3>
+        <p>Android and iOS apps for products that already have a web side, including parent and staff portals.</p>
+      </div>
+      <div>
+        <h3>Rescue work</h3>
+        <p>An application someone else left half finished, or one that has outgrown the hosting it was put on.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2>Get in touch</h2>
+    <p>
+      Tell me what you're trying to build and roughly when you need it. I'll tell
+      you straight whether I'm the right person for it.
+    </p>
+    <div class="lines">
+      <a href="tel:+919872872276">+91 98728 72276</a>
+      <a href="mailto:shamjaswal@gmail.com">shamjaswal@gmail.com</a>
+      <a href="https://www.linkedin.com/company/vexanto" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>Sham Pal — Vexanto</span>
+    <span>Punjab and Himachal Pradesh</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
